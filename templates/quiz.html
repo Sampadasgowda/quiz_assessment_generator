@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .correct-answer {
+            font-weight: bold;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Questions</h1>
+    <div id="quiz">
+        {% for question in questions %}
+            <div class="question">
+                <p><strong>{{ question.question_text }}</strong></p>
+                <div class="options">
+                    <p>A. {{ question.choices[0] }}</p>
+                    <p>B. {{ question.choices[1] }}</p>
+                    <p>C. {{ question.choices[2] }}</p>
+                    <p>D. {{ question.choices[3] }}</p>
+                </div>
+                <p class="correct-answer">Correct Answer: {{ question.correct_answer }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

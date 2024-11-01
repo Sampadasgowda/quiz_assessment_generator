@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz and Assessment Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="file"], button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz and Assessment Generator</h1>
+
+    <div class="form-section">
+        <h2>Generate Quiz</h2>
+        <form action="/generate-quiz" method="post" enctype="multipart/form-data">
+
+            <label for="topic">Enter Quiz Topic:</label>
+            <input type="text" name="topic" id="topic" placeholder="Enter topic (if applicable)">
+
+            <label for="image">Upload Image:</label>
+            <input type="file" name="image" id="image" accept="image/*">
+
+            <label for="pdf">Upload PDF:</label>
+            <input type="file" name="pdf" id="pdf" accept=".pdf">
+
+            <button type="submit">Generate Quiz</button>
+        </form>
+    </div>
+
+    <div class="form-section">
+        <h2>Generate Assessment</h2>
+        <form action="/generate-assessment" method="post" enctype="multipart/form-data">
+            <label for="assessment_topic">Assessment Topic:</label>
+            <input type="text" name="assessment_topic" id="assessment_topic(if applicable)" placeholder="Enter topic">
+
+            <label for="image">Upload Image:</label>
+            <input type="file" name="image" id="image" accept="image/*">
+
+            <label for="pdf">Upload PDF:</label>
+            <input type="file" name="pdf" id="pdf" accept=".pdf">
+
+            <button type="submit">Generate Assessment</button>
+        </form>
+    </div>
+</body>
+</html>
