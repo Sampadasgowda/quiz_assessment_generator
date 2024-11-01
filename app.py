@@ -175,25 +175,23 @@ def generate_assessment():
             else:
                 return render_template('error.html', error="No text found in the PDF.")
 
-        # Prepare the prompt for assessment generation
+        # Prepare the prompt for assessment generation without asterisks
         prompt = (
-            f"Generate 10 assessment questions on the topic '{topic}'. "
-            "Each question should be open-ended and should not require specific formats."
+            f"Generate 10 open-ended assessment questions on the topic '{topic}'. "
+            "Each question should be in plain text and not require any formatting."
         )
 
         response = model.start_chat(history=[]).send_message(prompt)
         assessment_data = response.text.strip().split("\n")
 
-        questions = []
-
-        for line in assessment_data:
-            if line.strip():  # Ignore empty lines
-                questions.append(line.strip())
+        # Directly store each question as plain text
+        questions = [line.strip() for line in assessment_data if line.strip()]
 
         return render_template('assessment.html', questions=questions)
 
     except Exception as e:
         return render_template('error.html', error=f"Error: {str(e)}")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
